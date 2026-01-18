@@ -1,0 +1,40 @@
+class Solution {
+public:
+    int nextGreaterElement(int n) {
+        int n1=n;
+        vector<int> arr;
+        while(n1>0){
+            arr.insert(arr.begin(),n1%10);
+            n1/=10;
+        }
+        int idx=arr.size();
+        for(int i=arr.size()-1;i>0;i--){
+            if(arr[i]>arr[i-1]){
+                idx=i-1;
+                break;
+            }
+        }
+        if(idx==arr.size())return -1;
+        for(int i=arr.size()-1;i>idx;i--){
+            if(arr[i]>arr[idx]){
+                swap(arr[i],arr[idx]);
+                break;
+            }
+        }
+        reverse(arr.begin()+idx+1,arr.end());
+        int ans=0;
+        for(auto it:arr){
+            if(INT_MAX/10<ans)
+                return -1;
+            else
+                ans*=10;
+
+            if(INT_MAX-it<ans)
+                return -1;
+            else
+                ans+=it;
+            
+        }
+        return ans;
+    }
+};

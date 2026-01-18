@@ -1,0 +1,14 @@
+int minJumps(int X) {
+    X = abs(X);
+    int sum = 0;
+    int jump = 0;
+    while (sum < X) {
+        jump++;
+        sum += jump;
+    }
+    while ((sum - X) % 2 != 0) {
+        jump++;
+        sum += jump;
+    }
+    return jump;
+}

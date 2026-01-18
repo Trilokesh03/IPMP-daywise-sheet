@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int check(int target, vector<int>& tops, vector<int>& bottoms, int n) {
+        int rot_top = 0, rot_bottom = 0;
+        for (int i = 0; i < n; i++) {
+            if (tops[i] != target && bottoms[i] != target) return -1;
+            else if (tops[i] != target) rot_top++;
+            else if (bottoms[i] != target) rot_bottom++;
+        }
+        return min(rot_top, rot_bottom);
+    }
+
+    int minDominoRotations(vector<int>& tops, vector<int>& bottoms) {
+        int n = tops.size();
+        int res1 = check(tops[0], tops, bottoms, n);
+        if (res1 != -1) return res1;
+        return check(bottoms[0], tops, bottoms, n);
+    }
+};

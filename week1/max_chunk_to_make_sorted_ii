@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int maxChunksToSorted(vector<int>& arr) {
+        int n=arr.size();
+        if(n<=1)return n;
+        int partitions=0,leftmax=INT_MIN;
+        vector<int>rightmin(n);
+        rightmin[n-1]=INT_MAX;
+        for(int i=n-2;i>=0;i--){
+            rightmin[i]=min(rightmin[i+1],arr[i+1]);
+        }
+        for(int i=0;i<n-1;i++){
+            leftmax=max(leftmax,arr[i]);
+            if(leftmax<=rightmin[i])
+                partitions++;
+        }
+        return partitions+1;
+    }
+};

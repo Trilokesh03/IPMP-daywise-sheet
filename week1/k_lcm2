@@ -1,0 +1,35 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int n,k;
+        cin>>n>>k;
+        if(n%k==0){
+            for(int i=0;i<k;i++){
+                cout<<n/k<<" ";
+            }
+            cout<<endl;
+        }
+        else{
+            int n1=n-k+3;
+            if(n1%3==0){
+                cout<<n1/3<<" "<<n1/3<<" "<<n1/3<<" ";
+            }
+            else if(n1%2==1){
+                cout<<1<<" "<<n1/2<<" "<<n1/2<<" ";
+            }
+            else if(n1%2==0){
+                if(n1%4==0)
+                    cout<<n1/2<<" "<<n1/4<<" "<<n1/4<<" ";
+                else
+                    cout<<2<<" "<<(n1-2)/2<<" "<<(n1-2)/2<<" ";
+            }  
+            for(int i=0;i<k-3;i++){
+                    cout<<1<<" ";
+                }
+            cout<<endl;
+        }
+}
+}

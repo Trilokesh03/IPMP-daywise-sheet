@@ -1,0 +1,16 @@
+class Solution {
+  public:
+    vector<int> sieve(int n) {
+        vector<int> hash(n+1,1),answer;
+        for(int i=2;i*i<=n;i++){
+            if(hash[i]==1)
+                for(int j=i*i;j<=n;j+=i)
+                    hash[j]=0;
+        }
+        for(int i=2;i<=n;i++){
+            if(hash[i])
+                answer.push_back(i);
+        }
+        return answer;
+    }
+};

@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+using namespace std;
+vector<int> answer(vector<int> &arr){
+    long n=arr.size(),drench_pow=0;
+    vector<int> drench(n,0);
+    for(long i=n-1;i>=0;i--){
+        drench_pow=max(drench_pow,(long)arr[i]);
+        if(drench_pow>0){
+            drench[i]=1;
+            drench_pow--;
+        }
+        else
+            drench[i]=0;
+    }
+    return drench;
+}
+int main(){
+    int t;
+    cin>>t;
+    for(int i=0;i<t;i++){
+        long a;
+        cin>>a;
+        vector<int> cream(a);
+        
+        for(long j=0;j<a;j++)
+            cin>>cream[j];
+        vector<int> drench =answer(cream);
+        for(long j=0;j<a;j++)
+            cout<<drench[j]<<" ";
+        cout<<endl;
+    }
+}
